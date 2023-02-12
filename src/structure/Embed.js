@@ -2,14 +2,14 @@ const { ResolveColor } = require("./../util/Constants.js")
 
 class Embed {
   constructor(raw) {
-    this.title = raw.title ? raw.title : null
-    this.description = raw.description ? raw.description : null
-    this.url = raw.url ? raw.url : null
-    this.fields = raw.fields ? raw.fields : []
-    this.author = raw.author ? raw.author : null
-    this.footer = raw.footer ? raw.footer : null
-    this.image = raw.image ? raw.image : null
-    this.color = raw.color ? raw.color : ResolveColor("Random")
+    this.title = raw?.title || null
+    this.description = raw?.description || null
+    this.url = raw?.url || null
+    this.fields = raw?.fields || []
+    this.author = raw?.author || null
+    this.footer = raw?.footer || null
+    this.image = raw?.image || null
+    this.color = raw?.color || ResolveColor("Random")
   }
 
   addField(name, value, inline) {
@@ -139,7 +139,7 @@ class Embed {
           return this
         }
         if ((!image.url?.startsWith("http")) || (!image.url?.startsWith("https"))) {
-          throw new Error("Parameter image.url Must Be Using URL\n\nLike \"https://google.com/image.jpg\"")
+          throw new Error("Parameter image.url Must Be Using URL\n\nLike \"https||//google.com/image.jpg\"")
           return this
         }
         this.image = { url: image.url }
@@ -167,7 +167,7 @@ class Embed {
         return this
       }
       if ((!image.url?.startsWith("http")) || (!image.url?.startsWith("https"))) {
-        throw new Error("Parameter image.url Must Be Using URL\n\nLike \"https://google.com/image.jpg\"")
+        throw new Error("Parameter image.url Must Be Using URL\n\nLike \"https||//google.com/image.jpg\"")
         return this
       }
       this.thumbnail = { url: image.url }
